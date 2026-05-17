@@ -56,16 +56,17 @@
 
 ## 7 & 8. Тест случаи според Every Branch критериумот за `borrowBook`
 
-За да се исполни **Every Branch** критериумот, потребно е да ги поминеме сите можни гранки (True и False исходи од сите одлуки) во графот. За оваа функција се потребни **минимално 4 тест случаи**.
+За да се исполни **Every Branch** критериумот, потребно е да ги поминеме сите можни гранки (True и False исходи од сите одлуки) во графот. За оваа функција се потребни **минимално 5 тест случаи**.
 
 ### Табела на тест случаи и покриеност на гранки
 
 | Тест случај | Влез (`title`, `author`) | Состојба во библиотека | Очекуван излез | Покриени гранки |
 | :--- | :--- | :--- | :--- | :--- |
-| **TC1** | `"", "Robert C. Martin"` | Било каква | `IllegalArgumentException` | True гранка на почетниот услов за валидација. |
-| **TC2** | `"Non Existing", "Unknown"`| Празна / Без таа книга | `RuntimeException` ("Not found") | False гранка од циклусот (книгата не е пронајдена). |
-| **TC3** | `"Clean Code", "Robert C. Martin"`| Книгата е слободна | Успешно изнајмување | False гранка кај проверката `if (book.isBorrowed())`. |
-| **TC4** | `"Clean Code", "Robert C. Martin"`| Книгата е веќе изнајмена| `RuntimeException` ("Already borrowed") | True гранка кај проверката `if (book.isBorrowed())`. |
+| **test 1** | `"", "Robert C. Martin"` | Било каква | `IllegalArgumentException` | Branch 1 (title е празен) |
+| **test 2** | `"Clean Code", ""` | Било каква | `IllegalArgumentException` | Branch 2 (author е празен) |
+| **test 3** | `"Non Existing", "Unknown"`| Не постои таква книга | `RuntimeException` ("Not found") | Branch 3 (книгата не е пронајдена) |
+| **test 4** | `"Clean Code", "Robert C. Martin"`| Книгата е слободна | Успешно изнајмување | Branch 4 (пронајдена, не е позајмена) |
+| **test 5** | `"Clean Code", "Robert C. Martin"`| Книгата е веќе изнајмена| `RuntimeException` ("Already borrowed") | Branch 5 (пронајдена, веќе позајмена) |
 
 ---
 
